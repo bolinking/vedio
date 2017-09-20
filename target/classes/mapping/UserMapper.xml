@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gwall.dao.UserDao">
+   <sql id="sql_count">
+        SELECT COUNT(*)
+    </sql>
+    <sql id="sql_select">
+        SELECT *
+    </sql>
+    <sql id="sql_where">
+        FROM userinfo
+        <where>
+            <if test="queryObj != null">
+                <if test="queryObj.name != null and queryObj.name != ''">
+                    AND name like CONCAT('%',#{queryObj.name},'%')
+                </if>
+                <if test="queryObj.age != null">
+                    AND age = #{queryObj.age}
+                </if>
+            </if>
+        </where>
+    </sql>
+
+    <select id="selectUserInfo" parameterType="gwall.entity.PageModel" resultType="gwall.entity.UserInfo">
+        <include refid="sql_select"></include>
+        <include refid="sql_where"></include>
+        <if test="pageNumber != null and  pageSize!= null">
+            limit #{startRow},#{pageSize}
+        </if>
+    </select>
+
+    <select id="selectUserCountWithPage" parameterType="gwall.entity.PageModel" resultType="Integer">
+        <include refid="sql_count"></include>
+        <include refid="sql_where"></include>
+    </select>
+    
+    <insert id="saveuserInfo" parameterType="gwall.entity.UserInfo">
+         insert into userinfo (name,age) values (#{name},#{age}) 
+    </insert>
+    
+    <delete id="deleteuserInfo" parameterType="java.util.List">
+         delete from userinfo where id in
+		    <foreach collection="list" item="item" index="index"   open="(" separator="," close=")">
+		       #{item.id}
+		    </foreach>
+    </delete>
+
+</mapper>
