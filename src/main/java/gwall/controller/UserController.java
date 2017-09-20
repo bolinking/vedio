@@ -20,7 +20,7 @@ import gwall.service.UserService;
 public class UserController {
 	@Autowired  
     private UserService userService;  
-      
+    //³õ´ÎÌø×ª
     @RequestMapping(value ="/",method = {RequestMethod.GET})  
     public String showInfo(final Model model) { 
         return "/user/userInfo";  
