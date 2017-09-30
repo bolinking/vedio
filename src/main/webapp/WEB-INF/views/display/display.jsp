@@ -18,6 +18,9 @@ function main2(){
 	$("#main2").css("display","none");
 	$("#main1").css("display","block");
 }
+function main3(id){
+	window.URL.createObjectURL=id;
+}
 </script>
 <style type="text/css">
 div{margin:5px;border:0;padding:0;}
@@ -33,17 +36,9 @@ div{margin:5px;border:0;padding:0;}
 	<li><a href="#">Java</a></li>
 	<li><a href="#">PHP</a></li>
 </ul><br><br><br>
-<ul class="nav nav-tabs nav-justified">
-	<li class="active"><a href="#">Home</a></li>
-	<li><a href="#">SVN</a></li>
-	<li><a href="#">iOS</a></li>
-	<li><a href="#">VB.Net</a></li>
-	<li><a href="#">Java</a></li>
-	<li><a href="#">PHP</a></li>
-</ul>
 </div>
 <div id="main1">
-${raw.title }
+<a href="#" onclick="main3(id='${raw.source_url }')">${raw.title }</a>
 </div>
 <div id="main2" style="display:none">
 ssssss
