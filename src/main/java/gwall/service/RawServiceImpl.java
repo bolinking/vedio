@@ -1,5 +1,8 @@
 package gwall.service;
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,14 @@ public class RawServiceImpl implements RawService {
 	
 	public Raw queryRawById(String id) {
 		return rawDao.queryRawById(id);
+	}
+
+	public List<Raw> queryAllRaw() {
+		return rawDao.queryAllRaw();
+	}
+
+	public int sumTotal() {
+		return rawDao.sumTotal();
 	}
 
 }
