@@ -172,5 +172,79 @@ public class SendMessageUtils {
 				}
 			}
 		}
-	}	
+	}
+	
+//	String subject = "承运商费用明细报表根据月份物流按邮件发送";
+//	//	sendEmail(email,subject,map.get("fileName").toString(),path);
+//	MailMessage mailMessage=new MailMessage();
+//	//发件人
+//	//mailMessage.setFrom("it@arvato-apac.cn");
+//	mailMessage.setFrom("hjl@gwall.cn");
+//	//邮件主题
+//	mailMessage.setSubject(subject);
+//	String filePath =path;
+//	String OSName = System.getProperty("os.name");
+//	if(OSName.contains("Windows")) {
+//		filePath = filePath + "exports\\"+map.get("fileName").toString();
+//	} else if(OSName.contains("unix")) {
+//		filePath = filePath + "exports/"+map.get("fileName").toString();
+//	}
+//	//邮件附件
+//	mailMessage.setFileNames(new String[]{filePath});
+//	StringBuffer sBuffer=new StringBuffer();
+//	sBuffer.append("Dear all,");
+//	sBuffer.append("  以下是今天截至到邮件发送时间点物流承运商费用明细报表的统计信息，");
+//	sBuffer.append("根据月份物流承运商费用明细报表发送邮件,数据报表邮件附件中,请注意查收,谢谢!");
+//	//邮件正文
+//	mailMessage.setContent(sBuffer.toString());
+//	//邮件收件人The "To" (primary) recipients.
+//	mailMessage.setTos(tos);
+//	//邮件秘密抄送人The "Cc" (carbon copy) recipients.
+//	mailMessage.setCcs(new String[]{});
+//	//The "Bcc" (blind carbon copy) recipients.
+//	mailMessage.setBccs(new String[]{});
+//	//发送邮件
+//	SendMailMessageUtil.sendAnonymousEmail(mailMessage);
+	
+	
+//	List<Object[]> paramVals = new ArrayList<Object[]>();
+//	if(pcdeList == null || pcdeList.size() == 0){
+//		return null;
+//	}
+//	String tableName = pcdeList.get(0).getClass().getSimpleName(); 
+//	StringBuffer insertFields = new StringBuffer();
+//	StringBuffer placeholder = new StringBuffer();
+//
+//	for (int i = 0;i < pcdeList.size();i++) {
+//		Pcde entity = pcdeList.get(i);
+//		Field[] fields = entity.getClass().getDeclaredFields();
+//		List<Object> insertVals = new ArrayList<Object>();
+//
+//		for (int j = 0; j < fields.length;j++) {
+//			String name = fields[j].getName();
+//			Transient tra =fields[j].getAnnotation(Transient.class);
+//			if(tra != null || "serialVersionUID".equals(name)){
+//				if(i == 0 && j == fields.length - 1){
+//					insertFields.deleteCharAt(insertFields.length() - 1);
+//					placeholder.deleteCharAt(placeholder.length() - 1);
+//				}
+//				continue;
+//			}
+//			if(i == 0){
+//				if(j < fields.length - 1){
+//					insertFields.append(name + ",");
+//					placeholder.append("?,");
+//				}else{
+//					insertFields.append(name);
+//					placeholder.append("?");
+//				}
+//			}
+//			PropertyDescriptor pd = new PropertyDescriptor(name, entity.getClass());
+//			Method method = pd.getReadMethod();
+//			insertVals.add(method.invoke(entity));
+//		}
+//		paramVals.add(insertVals.toArray());
+//	}
+//
+//	return getDatabase().batchUpdate("insert into " + tableName + " (" + insertFields.toString() + ") values (" + placeholder.toString() + ")", paramVals);
 }
